@@ -1,0 +1,85 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Roboto", "Helvetica Neue", "Arial", sans-serif;
+}
+
+.card {
+  width: 350px;
+  height: 400px;
+  margin: 20px;
+  cursor: pointer;
+}
+.card-header {
+  color: white;
+  height: 300px;
+  text-align: center;
+  font-size: 30px;
+  line-height: 100px;
+}
+.card-image {
+  height: 300px;
+  width: 350px;
+  border-radius: 30px 30px 0px 0px;
+}
+.card-footer {
+  height: 100px;
+  border: 1px solid lightgray;
+  border-radius: 0px 0px 30px 30px;
+  font-size: 20px;
+  text-align: center;
+  line-height: 100px;
+}
+.menu {
+  height: 100px;
+  background-color: lightgray;
+  color: white;
+  font-size: 20px;
+  line-height: 100px;
+}
+.logo {
+  margin: 10px 0px 0px 20px;
+  height: 80px;
+  border-radius: 30px;
+}
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.menu ul li {
+  float: left;
+}
+.menu ul li a {
+  display: block;
+  padding: 8px;
+}
+.search{
+  border-radius: 5px;
+  border: 0px;
+  height: 50px;
+  width: 600px;
+  margin: 0 10px 0 40px;
+  color:grey;
+  padding-left: 10px;
+  font-size: 16px;
+}
+.search_button{
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  background-color: white;
+}
+.add_button{
+  height: 50px;
+  width: 50px;
+  border-radius: 30px;
+  background-color: #fbd92b;
+  position: sticky;
+  bottom: 5%;
+  left: 50%;
+
+}
