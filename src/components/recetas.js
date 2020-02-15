@@ -18,14 +18,14 @@ class Recetas extends Component {
       <div>
         {this.state.recetas.map(receta => (
           <div className="card" key={receta.id}>
-            <div className="card-header">
+            <div className="card_header">
               <img
-                className="card-image"
+                className="card_image"
                 src={receta.imagen}
                 alt="imagen receta 1"
               ></img>
             </div>
-            <div className="card-footer">
+            <div className="card_footer">
               <div>{receta.titulo}</div>
               {/* <FontAwesomeIcon icon={faTrash} /> */}
             </div>
