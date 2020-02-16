@@ -4,7 +4,7 @@
 
 - sudo npm add redux react-redux
 
-### Install fontawesome package fro icons
+### Install fontawesome icons package
 
 - sudo npm i --save @fortawesome/fontawesome-svg-core
 - sudo npm i --save @fortawesome/free-solid-svg-icons
@@ -13,6 +13,14 @@
 ### Install bootstrap libraries
 
 - sudo npm install react-boostrap bootstrap
+
+### Install React-Router package
+
+- sudo npm add react-router-dom
+
+### Install Redux package
+
+- sudo npm add redux react-redux
 
 ### Run project
 

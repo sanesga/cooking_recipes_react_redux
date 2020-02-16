@@ -5,8 +5,13 @@
   text-decoration: none;
   font-family: "Roboto", "Helvetica Neue", "Arial", sans-serif;
 }
+/* div que contiene todas las recetas */
+.cards_container{
+margin-top: 100px;
+}
 
 .card {
+  float: left;
   width: 350px;
   height: 400px;
   margin: 20px;
@@ -32,13 +37,18 @@
   text-align: center;
   line-height: 100px;
 }
+/* menu principal */
 .menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
   height: 100px;
   background-color: lightgray;
   color: white;
   font-size: 20px;
   line-height: 100px;
 }
+/* logo del menu principal */
 .logo {
   margin: 10px 0px 0px 20px;
   height: 80px;
@@ -54,9 +64,9 @@
   float: left;
 }
 .menu ul li a {
-  display: block;
   padding: 8px;
 }
+/* input de búsqueda de recetas */
 .search {
   border-radius: 5px;
   border: 0px;
@@ -67,24 +77,44 @@
   padding-left: 10px;
   font-size: 16px;
 }
+/* botón de búsqueda de recetas */
 .search_button {
+  cursor: pointer;
   height: 40px;
   width: 40px;
   border-radius: 20px;
   background-color: white;
 }
+/* boton carrito */
+.favorite_button{
+  cursor: pointer;
+  font-size: 16px;
+  height: 50px;
+  width: 50px;
+/* border: none; */
+border-radius: 30px;
+  background-color: #fbd92b;
+}
+.menu ul .li_right{
+  float: right;
+  margin-right: 3%;
+}
+/* botón añadir receta */
 .add_button {
+  cursor:pointer; 
   height: 50px;
   width: 50px;
   border-radius: 30px;
   background-color: #fbd92b;
-  position: sticky;
-  bottom: 5%;
+  position: fixed;
+  top: 90%;
   left: 50%;
 }
+/* formulario añadir receta */
 .modal {
+  visibility: hidden;
   border: 1px solid lightgray;
-  height: 550px;
+  height: 600px;
   width: 600px;
   position: absolute;
   left: 0;
@@ -121,3 +151,36 @@
   width: 200px;
   display: inline-block;
 }
+.form_title{
+  background-color:#fbd92b ;
+  height: 60px;
+  color: grey;
+  text-align: center;
+  line-height: 60px;
+}
+/* formato de cada receta */
+.receta_container{
+  margin-top:100px;
+  border: 1px solid lightgray;
+  height: 50%;
+  width: 60%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: white;
+  -webkit-box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
+  -moz-box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
+  box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
+}
+.receta_image{
+  height: 100%;
+  float: right;
+}
+.receta_image > img{
+  height: 100%;
+}
+
+
