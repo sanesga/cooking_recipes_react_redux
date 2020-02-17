@@ -59,6 +59,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
+
 const mapStateToProps = state => {
   //console.log(state.recetas);
  // console.log(localStorage.getItem("recetas"));
@@ -113,6 +114,7 @@ class Recetas extends Component {
   }
 
   render() {
+    
     if (this.state.mostrarDetalle) {
       // console.log(this.state.receta)
       // return <Receta></Receta>

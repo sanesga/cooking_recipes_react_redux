@@ -201,6 +201,7 @@
   background-color: lightgray;
 }
 
+
 /* formato de cada receta */
 .receta_container {
   margin-top: 100px;
@@ -328,4 +329,7 @@
   -moz-box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
   box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
   z-index: 10;
+}
+.formulario_modificar{
+  visibility: hidden;
 }

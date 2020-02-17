@@ -30,6 +30,12 @@ const mapDispatchToProps = dispatch => ({
       type: "ELIMINAR_RECETA",
       id
     });
+  },
+  fav(id) {
+    dispatch({
+      type: "AGREGAR_FAVORITO",
+      id
+    });
   }
 });
 
@@ -82,6 +88,9 @@ class Receta extends Component {
   eliminar = e => {
     this.props.borrar(this.state.id);
   };
+  favorito = e => {
+    this.props.fav(this.state.id);
+  };
 
   render() {
     const form = document.getElementsByClassName("formulario");
@@ -113,7 +122,7 @@ class Receta extends Component {
           <button className="menu_lateral_buttons" onClick={this.eliminar}>
             <FontAwesomeIcon icon={faTrash} />
           </button>
-          <button className="menu_lateral_buttons">
+          <button className="menu_lateral_buttons" onClick={this.favorito}>
             <FontAwesomeIcon icon={faHeart} />
           </button>
           <button className="menu_lateral_buttons" onClick={this.atras}>
@@ -177,7 +186,7 @@ class Receta extends Component {
         </div>
 
         {/* FORMULARIO EDITAR RECETA */}
-        <form action="#" className="formulario" method="post">
+        <form action="#" className="formulario formulario_modificar" method="post">
 
           {/* HEADER DEL FORMULARIO */}
           <div className="form_header">

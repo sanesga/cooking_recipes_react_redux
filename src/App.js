@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Recetas from "./components/recetas";
 import Receta from "./components/receta";
 import Formulario from "./components/formulario";
+import Favoritos from "./components/favoritos";
 import Header from "./components/header";
 //importamos la librería de iconos fontawesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,7 +16,7 @@ import { Route, Link, Switch } from "react-router-dom";
 //importamos el provider y el store
 import { Provider } from "react-redux";
 import store from "./store";
-import { Redirect } from "react-router-dom";
+//import { Redirect } from "react-router-dom";
 
 
 class App extends Component {
@@ -71,6 +72,7 @@ class App extends Component {
             <Route exact path="/" component={Recetas} />
             <Route exact path="/receta" component={Receta} />
              <Route exact path="/formulario" component={Formulario} /> 
+             <Route exact path="/favoritos" component={Favoritos} /> 
             {/* {this.state.mostrarModal ? <Formulario></Formulario>: null}  */}
            </Provider> 
 

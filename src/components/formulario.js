@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect , Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
+import imageDefault from '../img/default.jpg';
 
 const mapStateToProps = state => {
   return {
-  recetas: state.recetas
+    recetas: state.recetas
   };
 };
 
@@ -20,34 +21,35 @@ const mapDispatchToProps = dispatch => ({
 class Formulario extends Component {
   constructor(props) {
     super(props);
-   const posicion= this.props.recetas.length;
-   const receta=this.props.recetas.find(receta => receta.id===posicion);
- 
+    const posicion = this.props.recetas.length;
+    const receta = this.props.recetas.find(receta => receta.id === posicion);
+
     this.state = {
       id: receta.id++,
-      atras:false,
+      atras: false,
       titulo: "",
       preparacion: "",
       dificultad: "",
       tiempo: "00:00",
-      raciones: 0
+      raciones: 0,
+      imagen: imageDefault
     };
   }
 
   añadir = e => {
     this.props.agregar(this.state);
     this.setState({
-      atras:true
+      atras: true
     });
   };
   guardar = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
+
   };
 
   render() {
-
     if (this.state.atras) {
       return <Redirect to="/"></Redirect>;
     }
@@ -121,10 +123,14 @@ class Formulario extends Component {
             ></input>
             <br></br>
           </div>
-
           <div className="form_footer">
             <input type="button" value="Guardar" onClick={this.añadir}></input>
-       <Link to="/"> <button id="boton_cancelar" value="Cancelar">Cancelar</button></Link>
+            <Link to="/">
+              {" "}
+              <button id="boton_cancelar" value="Cancelar">
+                Cancelar
+              </button>
+            </Link>
           </div>
         </form>
       </div>
