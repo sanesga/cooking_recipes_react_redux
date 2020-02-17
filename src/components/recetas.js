@@ -96,7 +96,6 @@ class Recetas extends Component {
     super(props);
     this.state = {
       mostrarDetalle: false,
-      id: -1,
       receta: null
     };
   }
@@ -104,7 +103,6 @@ class Recetas extends Component {
   mostrarDetalle(receta) {
     this.setState({
       mostrarDetalle: true,
-      id: receta.id,
       receta: receta
     });
 

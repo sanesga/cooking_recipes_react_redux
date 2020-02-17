@@ -46,7 +46,6 @@ class Formulario extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
-
   };
 
   render() {
@@ -137,5 +136,4 @@ class Formulario extends Component {
     );
   }
 }
-//export default Formulario;
 export default connect(mapStateToProps, mapDispatchToProps)(Formulario);

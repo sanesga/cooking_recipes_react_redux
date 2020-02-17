@@ -31,11 +31,18 @@ const mapDispatchToProps = dispatch => ({
       id
     });
   },
-  fav(id) {
-    dispatch({
-      type: "AGREGAR_FAVORITO",
-      id
-    });
+  fav(estado) {
+    if (estado.favorito) {
+      dispatch({
+        type: "AGREGAR_FAVORITO",
+        estado
+      });
+    } else {
+      dispatch({
+        type: "ELIMINAR_FAVORITO",
+        estado
+      });
+    }
   }
 });
 
@@ -51,7 +58,8 @@ class Receta extends Component {
       preparacion: this.props.location.state.receta.preparacion,
       dificultad: this.props.location.state.receta.dificultad,
       tiempo: this.props.location.state.receta.tiempo,
-      raciones: this.props.location.state.receta.raciones
+      raciones: this.props.location.state.receta.raciones,
+      favorito: false
     };
   }
 
@@ -89,7 +97,16 @@ class Receta extends Component {
     this.props.borrar(this.state.id);
   };
   favorito = e => {
-    this.props.fav(this.state.id);
+    if (this.state.favorito) {
+      this.setState({
+        favorito: false
+      });
+    } else {
+      this.setState({
+        favorito: true
+      });
+    }
+    this.props.fav(this.state);
   };
 
   render() {
@@ -110,6 +127,15 @@ class Receta extends Component {
       return <Redirect to="/"></Redirect>;
     }
 
+    var botonFavorito = document.getElementById("boton_favorito");
+    if (botonFavorito) {
+      if (this.state.favorito) {
+        botonFavorito.style.backgroundColor = "grey";
+      } else {
+        botonFavorito.style.backgroundColor = "white";
+      }
+    }
+
     //console.log(receta);
 
     return (
@@ -122,7 +148,11 @@ class Receta extends Component {
           <button className="menu_lateral_buttons" onClick={this.eliminar}>
             <FontAwesomeIcon icon={faTrash} />
           </button>
-          <button className="menu_lateral_buttons" onClick={this.favorito}>
+          <button
+            id="boton_favorito"
+            className="menu_lateral_buttons"
+            onClick={this.favorito}
+          >
             <FontAwesomeIcon icon={faHeart} />
           </button>
           <button className="menu_lateral_buttons" onClick={this.atras}>
@@ -186,8 +216,11 @@ class Receta extends Component {
         </div>
 
         {/* FORMULARIO EDITAR RECETA */}
-        <form action="#" className="formulario formulario_modificar" method="post">
-
+        <form
+          action="#"
+          className="formulario formulario_modificar"
+          method="post"
+        >
           {/* HEADER DEL FORMULARIO */}
           <div className="form_header">
             <h1>EDITAR RECETA</h1>

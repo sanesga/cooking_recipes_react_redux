@@ -10,7 +10,6 @@ const mapStateToProps = state => {
     return {
      favoritos: JSON.parse(sessionStorage.getItem("favoritos"))
     };
-
   }else{
     return {
       favoritos: state.favoritos
@@ -27,19 +26,21 @@ class Favoritos extends Component {
     super(props);
     this.state = {
       mostrarDetalle: false,
+      receta: null
     };
   }
 
   mostrarDetalle(receta) {
     this.setState({
       mostrarDetalle: true,
+      receta: receta
     });
-
   }
 
   render() {
-    
+    console.log(this.state.receta);
     if (this.state.mostrarDetalle) {
+     
       return (
         <div>
           <Redirect
