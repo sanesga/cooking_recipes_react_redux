@@ -64,13 +64,13 @@ const mapStateToProps = state => {
  // console.log(localStorage.getItem("recetas"));
 
   if(JSON.parse(sessionStorage.getItem("recetas"))){
-    console.log("cogemos las recetas del local storage");
+   // console.log("cogemos las recetas del local storage");
     return {
      recetas: JSON.parse(sessionStorage.getItem("recetas"))
     };
 
   }else{
-    console.log("cogemos las recetas del store");
+   // console.log("cogemos las recetas del store");
     return {
       //  ...state,
       recetas: state.recetas

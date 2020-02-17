@@ -110,12 +110,12 @@
   top: 90%;
   left: 50%;
 }
-/* formulario añadir receta */
-.modal {
-  visibility: hidden;
+/* formulario añadir y modificar receta */
+.formulario {
+ 
   border: 1px solid lightgray;
-  height: 600px;
-  width: 600px;
+  height: 55%;
+  width: 30%;
   position: absolute;
   left: 0;
   right: 0;
@@ -128,37 +128,79 @@
   box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
   z-index: 10;
 }
-.add_form > input {
-  font-size: 18px;
-  display: block;
-  margin: 25px auto 20px auto;
-  height: 40px;
-  width: 400px;
-  padding-left: 10px;
-  border-radius: 5px;
-  border: 1px solid lightgrey;
-}
-.add_form > input[type="submit"] {
-  margin-left: 15%;
-  margin-right: 2%;
-  background-color: #fbd92b;
-  border: none;
-  width: 200px;
-  display: inline-block;
-}
-.add_form > input[type="reset"] {
-  background-color: lightgrey;
-  border: none;
-  width: 200px;
-  display: inline-block;
-}
-.form_title {
+.form_header {
   background-color: #fbd92b;
   height: 60px;
   color: grey;
   text-align: center;
   line-height: 60px;
 }
+.form_body {
+  width: 83%;
+  padding: 40px;
+}
+.form_body label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 1.5%;
+}
+.form_body input {
+  background-color: #fffcdc;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  height: 35px;
+  width: 100%;
+  padding-left: 10px;
+  margin-bottom: 4%;
+}
+.form_body textarea {
+  background-color: #fffcdc;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  height: 100px;
+  width: 98%;
+  padding: 10px;
+  margin-bottom: 4%;
+  resize: none;
+  text-align: justify;
+}
+.form_body select {
+  background-color: #fffcdc;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  height: 35px;
+  width: 102%;
+  padding-left: 10px;
+  margin-bottom: 4%;
+}
+.form_footer {
+  height: 40px;
+  text-align: center;
+}
+.form_footer input[type="button"] {
+  width: 40%;
+  height: 100%;
+  margin-right: 10px;
+  background-color: #fbd92b;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+}
+.form_footer button {
+  width: 40%;
+  height: 100%;
+  margin-right: 10px;
+  -webkit-box-shadow: -1px 0px 12px -4px rgba(145, 145, 145, 0.66);
+  -moz-box-shadow: -1px 0px 12px -4px rgba(145, 145, 145, 0.66);
+  box-shadow: -1px 0px 12px -4px rgba(145, 145, 145, 0.66);
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+}
+.form_footer input[type="button"]:last-child {
+  background-color: lightgray;
+}
+
 /* formato de cada receta */
 .receta_container {
   margin-top: 100px;
@@ -238,10 +280,10 @@
   text-align: justify;
   margin: 15px;
 }
-.menu_lateral{
+.menu_lateral {
   height: 22%;
   width: 10%;
-  background-color: #DB4361;
+  background-color: #db4361;
   margin-left: 16%;
   position: absolute;
   left: 0;
@@ -253,14 +295,14 @@
   box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
   border-radius: 6px;
 }
-.menu_lateral > button{
+.menu_lateral > button {
   margin: 20px;
   display: block;
 }
-.menu_lateral > button:focus{
+.menu_lateral > button:focus {
   outline: none;
 }
-.menu_lateral_buttons{
+.menu_lateral_buttons {
   margin: 0 10px 0 20px;
   height: 50px;
   width: 50px;
@@ -270,7 +312,7 @@
   cursor: pointer;
 }
 /* formulario editar tarea */
-.modal_editar_receta{
+.modal_editar_receta {
   visibility: hidden;
   border: 1px solid lightgray;
   height: 600px;
@@ -287,5 +329,3 @@
   box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
   z-index: 10;
 }
-
-

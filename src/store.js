@@ -39,26 +39,26 @@ const estadoInicial = {
       raciones: 4
     }//fin receta
   ],//fin array recetas
-  listaRecetas: [], //array de recetas
   favoritos:[]
 
 };//fin const estadoInicial
 const reducerRecetas = (state = estadoInicial, action) => {
 
   if (action.type === "AGREGAR_A_RECETA") {
+    var newListaRecetas= state.recetas.concat(action.receta);
+    sessionStorage.setItem('recetas', JSON.stringify(newListaRecetas));
     return {
       ...state,
-      
+      recetas: newListaRecetas
     };
   }
 
-  if (action.type === "ELIMINAR") {
-    return {
+  if (action.type === "ELIMINAR_RECETA") {
+    var newListaRecetas= state.recetas.filter(receta=> receta.id !== action.id);
+    sessionStorage.setItem('recetas', JSON.stringify(newListaRecetas));
+        return {
       ...state,
-     // supermercado1: state.supermercado1.filter(
-       // j => j.id !== action.producto.id
-     // ),
-     // productos: state.productos.concat(action.producto)
+      recetas: newListaRecetas
     };
   }
 
@@ -66,15 +66,23 @@ const reducerRecetas = (state = estadoInicial, action) => {
 
      var newListaRecetas= state.recetas.filter(receta=> receta.id !== action.receta.id).concat(action.receta);
      sessionStorage.setItem('recetas', JSON.stringify(newListaRecetas));
-     //console.log(newListaRecetas);
-    //console.log(action.receta);
-    //console.log(state);
     return {
        ...state,
        recetas: newListaRecetas
     };
   
   }
+
+  if (action.type === "AGREGAR_RECETA") {
+
+    var newListaRecetas= state.recetas.concat(action.receta);
+    sessionStorage.setItem('recetas', JSON.stringify(newListaRecetas));
+   return {
+      ...state,
+      recetas: newListaRecetas
+   };
+ 
+ }
   return state;
 };
 export default createStore(reducerRecetas);

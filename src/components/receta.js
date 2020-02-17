@@ -19,10 +19,16 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   editar(receta) {
-    console.log(receta);
+    // console.log(receta);
     dispatch({
       type: "EDITAR_RECETA",
       receta
+    });
+  },
+  borrar(id) {
+    dispatch({
+      type: "ELIMINAR_RECETA",
+      id
     });
   }
 });
@@ -47,11 +53,10 @@ class Receta extends Component {
     this.setState({
       mostrarModal: true
     });
-  
   };
 
   cancelar = e => {
-   // console.log("entra a cancelar");
+    // console.log("entra a cancelar");
     this.setState({
       mostrarModal: false
     });
@@ -61,22 +66,25 @@ class Receta extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
- // this.props.editar(this.state);
+    // this.props.editar(this.state);
   };
   modificar = e => {
-      this.props.editar(this.state);
-      this.setState({
-        mostrarModal: false
-      });
+    this.props.editar(this.state);
+    this.setState({
+      mostrarModal: false
+    });
   };
   atras = e => {
     this.setState({
       atras: true
-    });   
-};
+    });
+  };
+  eliminar = e => {
+    this.props.borrar(this.state.id);
+  };
 
   render() {
-    const form = document.getElementsByClassName("modal_editar_receta");
+    const form = document.getElementsByClassName("formulario");
     const receta = this.props.location.state.receta;
 
     if (form.length !== 0) {
@@ -85,15 +93,12 @@ class Receta extends Component {
         form[0].style.visibility = "visible";
       } else {
         //es false al hacer click en el botón cancelar
-        const form = document.getElementsByClassName("modal_editar_receta");
         form[0].style.visibility = "hidden";
       }
     }
 
-    if(this.state.atras){
-      return(
-        <Redirect to="/"></Redirect>
-      );   
+    if (this.state.atras) {
+      return <Redirect to="/"></Redirect>;
     }
 
     //console.log(receta);
@@ -105,7 +110,7 @@ class Receta extends Component {
           <button className="menu_lateral_buttons" onClick={this.mostrarModal}>
             <FontAwesomeIcon icon={faEdit} />
           </button>
-          <button className="menu_lateral_buttons">
+          <button className="menu_lateral_buttons" onClick={this.eliminar}>
             <FontAwesomeIcon icon={faTrash} />
           </button>
           <button className="menu_lateral_buttons">
@@ -115,8 +120,6 @@ class Receta extends Component {
             <FontAwesomeIcon icon={faArrowLeft} />
           </button>
         </div>
-
-
 
         <div className="receta_container">
           <div className="receta_image">
@@ -174,28 +177,35 @@ class Receta extends Component {
         </div>
 
         {/* FORMULARIO EDITAR RECETA */}
-        <div className="modal_editar_receta">
-          <form action="#" className="add_form" method="post">
-            <div className="form_title">
-              <h1>EDITAR RECETA</h1>
-            </div>
+        <form action="#" className="formulario" method="post">
 
+          {/* HEADER DEL FORMULARIO */}
+          <div className="form_header">
+            <h1>EDITAR RECETA</h1>
+          </div>
+
+          {/* BODY DEL FORMULARIO */}
+          <div className="form_body">
+            <label htmlFor="titulo">Título</label>
             <input
+              id="titulo"
               name="titulo"
               type="text"
               value={this.state.titulo}
               onChange={this.guardar}
             ></input>
+            <br></br>
 
+            <label htmlFor="preparacion">Preparación</label>
             <textarea
               name="preparacion"
               id="preparacion"
-              rows="4"
-              cols="50"
               onChange={this.guardar}
               value={this.state.preparacion}
             ></textarea>
+            <br></br>
 
+            <label htmlFor="dificultad">Dificultad</label>
             <select
               className="form-control mb-4"
               id="dificultad"
@@ -207,30 +217,43 @@ class Receta extends Component {
               <option value="Media">Media</option>
               <option value="Baja">Alta</option>
             </select>
+            <br></br>
 
+            <label htmlFor="tiempo">Tiempo</label>
             <input
+              id="tiempo"
               name="tiempo"
               type="time"
               value={this.state.tiempo}
               onChange={this.guardar}
             ></input>
+            <br></br>
 
+            <label htmlFor="raciones">Raciones</label>
             <input
+              id="raciones"
               name="raciones"
               type="number"
               value={this.state.raciones}
               onChange={this.guardar}
             ></input>
+            <br></br>
+          </div>
 
-            <input type="button" value="Guardar" onClick={this.modificar}></input>
+          <div className="form_footer">
+            <input
+              type="button"
+              value="Guardar"
+              onClick={this.modificar}
+            ></input>
 
             <input
               type="button"
               onClick={this.cancelar}
               value="Cancelar"
             ></input>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     );
   }
