@@ -3,7 +3,7 @@ import Logo from "../img/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faHeart } from "@fortawesome/free-solid-svg-icons";
 //hacemos el import del Router, link y switch
-import { Route, Link, Switch } from "react-router-dom";
+//import { Route, Link, Switch } from "react-router-dom";
 
 class Header extends Component {
   constructor(props) {

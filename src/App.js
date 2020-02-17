@@ -8,7 +8,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 //hacemos el import del Router, link y switch
 //import { Route, Link, Switch } from "react-router-dom";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 //importamos el redirect
 //import { Redirect } from "react-router-dom";
 //importamos el provider y el store
@@ -73,7 +73,7 @@ class App extends Component {
         {/* <Receta></Receta> */}
 
         <div className="modal">
-          <form action="#" className="add_form" method="get">
+          <form action="#" className="add_form" method="post">
             <div className="form_title">
               <h1>AÑADIR RECETA</h1>
             </div>

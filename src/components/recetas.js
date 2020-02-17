@@ -55,7 +55,7 @@ import React, { Component } from "react";
 //import { recetas } from "../store";
 //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import Receta from "./receta";
+//import Receta from "./receta";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
@@ -127,6 +127,7 @@ class Recetas extends Component {
             className="card"
             key={receta.id}
             onClick={() => this.mostrarDetalle(receta)}
+            
           >
             {/* si hemos guardado un id en el state porque hemos hecho click, guardará la receta en el context */}
             {/* {this.state.id !== -1 && (

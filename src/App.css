@@ -6,8 +6,8 @@
   font-family: "Roboto", "Helvetica Neue", "Arial", sans-serif;
 }
 /* div que contiene todas las recetas */
-.cards_container{
-margin-top: 100px;
+.cards_container {
+  margin-top: 100px;
 }
 
 .card {
@@ -86,22 +86,22 @@ margin-top: 100px;
   background-color: white;
 }
 /* boton carrito */
-.favorite_button{
+.favorite_button {
   cursor: pointer;
   font-size: 16px;
   height: 50px;
   width: 50px;
-/* border: none; */
-border-radius: 30px;
+  /* border: none; */
+  border-radius: 30px;
   background-color: #fbd92b;
 }
-.menu ul .li_right{
+.menu ul .li_right {
   float: right;
   margin-right: 3%;
 }
 /* botón añadir receta */
 .add_button {
-  cursor:pointer; 
+  cursor: pointer;
   height: 50px;
   width: 50px;
   border-radius: 30px;
@@ -126,6 +126,7 @@ border-radius: 30px;
   -webkit-box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
   -moz-box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
   box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
+  z-index: 10;
 }
 .add_form > input {
   font-size: 18px;
@@ -151,18 +152,18 @@ border-radius: 30px;
   width: 200px;
   display: inline-block;
 }
-.form_title{
-  background-color:#fbd92b ;
+.form_title {
+  background-color: #fbd92b;
   height: 60px;
   color: grey;
   text-align: center;
   line-height: 60px;
 }
 /* formato de cada receta */
-.receta_container{
-  margin-top:100px;
+.receta_container {
+  margin-top: 100px;
   border: 1px solid lightgray;
-  height: 50%;
+  height: 40%;
   width: 60%;
   position: absolute;
   left: 0;
@@ -175,12 +176,112 @@ border-radius: 30px;
   -moz-box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
   box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
 }
-.receta_image{
+.receta_image {
   height: 100%;
   float: right;
+  width: 50%;
 }
-.receta_image > img{
+.receta_image > img {
   height: 100%;
+  width: 100%;
+}
+.receta_body > h1 {
+  height: 60px;
+  background-color: #fbd92b;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 60px;
+}
+.receta_body {
+  height: 100%;
+  width: 50%;
+}
+.receta_buttons {
+  margin: 0 10px 0 20px;
+  height: 50px;
+  width: 50px;
+  border-radius: 30px;
+  background-color: lightgray;
+  font-size: 20px;
+  color: white;
+  pointer-events: none;
+}
+.general_container {
+  height: 10%;
+}
+.receta_text_buttons {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.receta_text_buttons > span {
+  margin-top: 10px;
+  display: block;
+}
+.receta_button_container {
+  display: inline-block;
+}
+.texto_negrita {
+  font-weight: bold;
+}
+.receta_descripcion {
+  margin-top: 10px;
+}
+.header_descripcion {
+  height: 60px;
+  background-color: lightgrey;
+  line-height: 60px;
+  text-align: center;
+}
+.preparacion {
+  line-height: 2em;
+  text-align: justify;
+  margin: 15px;
+}
+.menu_lateral{
+  height: 17%;
+  width: 4.6%;
+  background-color: #DB4361;
+  margin-left: 10%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40%;
+  bottom: 0;
+  -webkit-box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
+  -moz-box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
+  box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
+  border-radius: 6px;
+}
+.menu_lateral > button{
+  margin: 20px;
+  display: block;
+}
+.menu_lateral_buttons{
+  margin: 0 10px 0 20px;
+  height: 50px;
+  width: 50px;
+  border-radius: 30px;
+  background-color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+.modal_editar_receta{
+  visibility: hidden;
+  border: 1px solid lightgray;
+  height: 600px;
+  width: 600px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: white;
+  -webkit-box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
+  -moz-box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
+  box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
+  z-index: 10;
 }
 
 
