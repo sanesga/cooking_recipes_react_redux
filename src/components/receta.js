@@ -1,22 +1,25 @@
 import React, { Component } from "react";
 //import { MyContext } from "./recetas";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Redirect } from "react-router-dom";
 import {
   faBlender,
   faClock,
   faUtensils,
   faHeart,
   faEdit,
-  faTrash
+  faTrash,
+  faArrowLeft
 } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => ({
-  receta: state.receta
+  //receta: state.receta
 });
 
 const mapDispatchToProps = dispatch => ({
   editar(receta) {
+    console.log(receta);
     dispatch({
       type: "EDITAR_RECETA",
       receta
@@ -29,14 +32,14 @@ class Receta extends Component {
     super(props);
     this.state = {
       mostrarModal: false,
-      id: null,
-      titulo: "",
-      imagen: "",
-      preparacion: "",
-      //por defecto la prioridad de la tarea, si no se selecciona ninguna prioridad, será alta
-      dificultad: "Alta",
-      tiempo: "",
-      raciones: 0
+      atras: false,
+      id: this.props.location.state.receta.id,
+      titulo: this.props.location.state.receta.titulo,
+      imagen: this.props.location.state.receta.imagen,
+      preparacion: this.props.location.state.receta.preparacion,
+      dificultad: this.props.location.state.receta.dificultad,
+      tiempo: this.props.location.state.receta.tiempo,
+      raciones: this.props.location.state.receta.raciones
     };
   }
 
@@ -44,11 +47,11 @@ class Receta extends Component {
     this.setState({
       mostrarModal: true
     });
-    //this.props.editar(receta);
+  
   };
 
   cancelar = e => {
-    console.log("entra a cancelar");
+   // console.log("entra a cancelar");
     this.setState({
       mostrarModal: false
     });
@@ -58,7 +61,19 @@ class Receta extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+ // this.props.editar(this.state);
   };
+  modificar = e => {
+      this.props.editar(this.state);
+      this.setState({
+        mostrarModal: false
+      });
+  };
+  atras = e => {
+    this.setState({
+      atras: true
+    });   
+};
 
   render() {
     const form = document.getElementsByClassName("modal_editar_receta");
@@ -75,10 +90,17 @@ class Receta extends Component {
       }
     }
 
+    if(this.state.atras){
+      return(
+        <Redirect to="/"></Redirect>
+      );   
+    }
+
     //console.log(receta);
 
     return (
       <div>
+        {/* menu lateral con botones editar, eliminar, favorito y atrás */}
         <div className="menu_lateral">
           <button className="menu_lateral_buttons" onClick={this.mostrarModal}>
             <FontAwesomeIcon icon={faEdit} />
@@ -89,14 +111,19 @@ class Receta extends Component {
           <button className="menu_lateral_buttons">
             <FontAwesomeIcon icon={faHeart} />
           </button>
+          <button className="menu_lateral_buttons" onClick={this.atras}>
+            <FontAwesomeIcon icon={faArrowLeft} />
+          </button>
         </div>
+
+
 
         <div className="receta_container">
           <div className="receta_image">
             <img src={receta.imagen} alt="imagen receta"></img>
           </div>
           <div className="receta_body">
-            <h1>{receta.titulo}</h1>
+            <h1>{this.state.titulo}</h1>
 
             {/* DIFICULTAD */}
             <div className="general_container">
@@ -107,7 +134,7 @@ class Receta extends Component {
               </div>
               <div className="receta_text_buttons">
                 <span className="texto_negrita">Dificultad</span>
-                <span>{receta.dificultad}</span>
+                <span>{this.state.dificultad}</span>
               </div>
             </div>
 
@@ -120,7 +147,7 @@ class Receta extends Component {
               </div>
               <div className="receta_text_buttons">
                 <span className="texto_negrita">Tiempo</span>
-                <span>{receta.tiempo}</span>
+                <span>{this.state.tiempo}</span>
               </div>
             </div>
 
@@ -133,7 +160,7 @@ class Receta extends Component {
               </div>
               <div className="receta_text_buttons">
                 <span className="texto_negrita">Raciones</span>
-                <span>{receta.raciones}</span>
+                <span>{this.state.raciones}</span>
               </div>
             </div>
 
@@ -141,7 +168,7 @@ class Receta extends Component {
               <div className="header_descripcion">
                 <h3>PASOS A SEGUIR</h3>
               </div>
-              <div className="preparacion">{receta.preparacion}</div>
+              <div className="preparacion">{this.state.preparacion}</div>
             </div>
           </div>
         </div>
@@ -156,7 +183,7 @@ class Receta extends Component {
             <input
               name="titulo"
               type="text"
-              defautlValue={receta.titulo}
+              value={this.state.titulo}
               onChange={this.guardar}
             ></input>
 
@@ -166,7 +193,7 @@ class Receta extends Component {
               rows="4"
               cols="50"
               onChange={this.guardar}
-              defautlValue={receta.preparacion}
+              value={this.state.preparacion}
             ></textarea>
 
             <select
@@ -174,7 +201,7 @@ class Receta extends Component {
               id="dificultad"
               name="dificultad"
               onChange={this.guardar}
-              defautlValue={receta.dificultad}
+              value={this.state.dificultad}
             >
               <option value="Alta">Baja</option>
               <option value="Media">Media</option>
@@ -184,21 +211,21 @@ class Receta extends Component {
             <input
               name="tiempo"
               type="time"
-              defautlValue={receta.tiempo}
+              value={this.state.tiempo}
               onChange={this.guardar}
             ></input>
 
             <input
               name="raciones"
               type="number"
-              defautlValue={receta.raciones}
+              value={this.state.raciones}
               onChange={this.guardar}
             ></input>
 
-            <input type="submit" value="Guardar"></input>
+            <input type="button" value="Guardar" onClick={this.modificar}></input>
 
             <input
-              type="reset"
+              type="button"
               onClick={this.cancelar}
               value="Cancelar"
             ></input>

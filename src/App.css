@@ -239,10 +239,10 @@
   margin: 15px;
 }
 .menu_lateral{
-  height: 17%;
-  width: 4.6%;
+  height: 22%;
+  width: 10%;
   background-color: #DB4361;
-  margin-left: 10%;
+  margin-left: 16%;
   position: absolute;
   left: 0;
   right: 0;
@@ -257,6 +257,9 @@
   margin: 20px;
   display: block;
 }
+.menu_lateral > button:focus{
+  outline: none;
+}
 .menu_lateral_buttons{
   margin: 0 10px 0 20px;
   height: 50px;
@@ -266,6 +269,7 @@
   font-size: 20px;
   cursor: pointer;
 }
+/* formulario editar tarea */
 .modal_editar_receta{
   visibility: hidden;
   border: 1px solid lightgray;

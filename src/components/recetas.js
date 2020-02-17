@@ -61,10 +61,21 @@ import { Redirect } from "react-router-dom";
 
 const mapStateToProps = state => {
   //console.log(state.recetas);
-  return {
-    //  ...state,
-    recetas: state.recetas,
-  };
+ // console.log(localStorage.getItem("recetas"));
+
+  if(JSON.parse(sessionStorage.getItem("recetas"))){
+    console.log("cogemos las recetas del local storage");
+    return {
+     recetas: JSON.parse(sessionStorage.getItem("recetas"))
+    };
+
+  }else{
+    console.log("cogemos las recetas del store");
+    return {
+      //  ...state,
+      recetas: state.recetas
+    };
+  }
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -84,8 +95,8 @@ class Recetas extends Component {
     super(props);
     this.state = {
       mostrarDetalle: false,
-      id:-1,
-      receta:null
+      id: -1,
+      receta: null
     };
   }
 
@@ -103,21 +114,22 @@ class Recetas extends Component {
 
   render() {
     if (this.state.mostrarDetalle) {
-     // console.log(this.state.receta)
-     // return <Receta></Receta>
-        return (
-          <div>
-        {/* <MyContext.Provider value={this.state.id}>
+      // console.log(this.state.receta)
+      // return <Receta></Receta>
+      return (
+        <div>
+          {/* <MyContext.Provider value={this.state.id}>
         <Receta></Receta>
       </MyContext.Provider> */}
-        {/* <Redirect to="/receta"></Redirect> */}
-        <Redirect to={{
-            pathname: '/receta',
-            state: { receta: this.state.receta }
-        }}
-/>
+          {/* <Redirect to="/receta"></Redirect> */}
+          <Redirect
+            to={{
+              pathname: "/receta",
+              state: { receta: this.state.receta }
+            }}
+          />
         </div>
-        );
+      );
     }
 
     return (
@@ -127,7 +139,6 @@ class Recetas extends Component {
             className="card"
             key={receta.id}
             onClick={() => this.mostrarDetalle(receta)}
-            
           >
             {/* si hemos guardado un id en el state porque hemos hecho click, guardará la receta en el context */}
             {/* {this.state.id !== -1 && (
