@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   showModal = e => {
-    console.log("entra a show modal");
+   // console.log("entra a show modal");
     this.setState({
       mostrarModal: true
     });

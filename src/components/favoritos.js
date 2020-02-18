@@ -2,6 +2,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import {
+  faTrash,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const mapStateToProps = state => {
@@ -18,7 +22,13 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-
+  
+  eliminarFavorito(receta) {
+    dispatch({
+      type: "ELIMINAR_FAVORITO",
+      receta
+    });
+}
 });
 
 class Favoritos extends Component {
@@ -37,8 +47,15 @@ class Favoritos extends Component {
     });
   }
 
+  eliminarFav(receta) {
+   // console.log("entra a aeliminar fav");
+    this.props.eliminarFavorito(receta);
+  }
+
+
   render() {
-    console.log(this.state.receta);
+   
+    //console.log(this.state.receta);
     if (this.state.mostrarDetalle) {
      
       return (
@@ -59,17 +76,20 @@ class Favoritos extends Component {
           <div
             className="card"
             key={receta.id}
-            onClick={() => this.mostrarDetalle(receta)}
           >
             <div className="card_header">
               <img
+              onClick={() => this.mostrarDetalle(receta)}
                 className="card_image"
                 src={receta.imagen}
                 alt="imagen receta 1"
               ></img>
             </div>
-            <div className="card_footer">
-              <div>{receta.titulo}</div>
+            <div className="card_footer card_footer_fav">
+              <div>
+                {receta.titulo}
+                <button onClick={() => this.eliminarFav(receta)}className="boton_eliminar_fav"><FontAwesomeIcon icon={faTrash} /></button>
+             </div>
             </div>
           </div>
         ))}

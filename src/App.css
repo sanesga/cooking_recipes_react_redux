@@ -37,6 +37,14 @@
   text-align: center;
   line-height: 100px;
 }
+.boton_eliminar_fav{
+  border-radius: 20px;
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+  background-color: #fbd92b;
+}
+
 /* menu principal */
 .menu {
   position: fixed;

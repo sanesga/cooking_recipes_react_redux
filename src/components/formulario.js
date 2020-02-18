@@ -4,9 +4,23 @@ import { Redirect, Link } from "react-router-dom";
 import imageDefault from '../img/default.jpg';
 
 const mapStateToProps = state => {
-  return {
-    recetas: state.recetas
-  };
+
+  if (JSON.parse(sessionStorage.getItem("recetas"))) {
+    console.log("coge de sesion");
+    return {
+      recetas: JSON.parse(sessionStorage.getItem("recetas"))
+    };
+  } else {
+    console.log("coge de state");
+    console.log(state.recetas);
+    return {
+      recetas: state.recetas
+    };
+  }
+
+   
+
+
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -21,11 +35,15 @@ const mapDispatchToProps = dispatch => ({
 class Formulario extends Component {
   constructor(props) {
     super(props);
+    console.log(this.props.recetas);
     const posicion = this.props.recetas.length;
     const receta = this.props.recetas.find(receta => receta.id === posicion);
+    console.log(receta.id++);
+    const idReceta= receta.id++;
 
     this.state = {
-      id: receta.id++,
+      
+      id: idReceta,
       atras: false,
       titulo: "",
       preparacion: "",

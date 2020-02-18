@@ -98,11 +98,11 @@ const reducerRecetas = (state = estadoInicial, action) => {
   }
 
   if (action.type === "ELIMINAR_FAVORITO") {
-    var list6 = state.favoritos.filter(receta => receta.id !== action.id);
+    var list6 = state.favoritos.filter(receta => receta.id !== action.receta.id);
     sessionStorage.setItem("favoritos", JSON.stringify(list6));
     return {
       ...state,
-      recetas: list6
+      favoritos: list6
     };
   }
   return state;

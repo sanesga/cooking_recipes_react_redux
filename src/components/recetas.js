@@ -1,91 +1,20 @@
-// import React from "react";
-// //import React, { Component } from "react";
-// //import { recetas } from "../store";
-// //import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// //import { faTrash } from "@fortawesome/free-solid-svg-icons";
-// //import Receta from "./receta";
-// import { connect } from "react-redux";
-
-// const Recetas = ({ recetas, agregarReceta }) => (
-
-//       <div className="cards_container">
-//         {recetas.map(receta => (
-//           <div className="card" key={receta.id} onClick={() => agregarReceta(receta)}>
-//             <div className="card_header">
-//               <img
-//                 className="card_image"
-//                 src={receta.imagen}
-//                 alt="imagen receta 1"
-//               ></img>
-//             </div>
-//             <div className="card_footer">
-//               <div>{receta.titulo}</div>
-//               {/* <FontAwesomeIcon icon={faTrash} /> */}
-//             </div>
-//           </div>
-//         ))}
-//       </div>
-
-// );
-
-// const mapStateToProps = state => {
-//   //console.log(state.recetas);
-//   return {
-//    ...state,
-//     recetas: state.recetas
-//   };
-// };
-
-// const mapDispatchToProps = dispatch => ({
-//   agregarReceta(receta){
-//     //console.log("entra a agregarReceta");
-//     dispatch({
-//       type: 'AGREGAR_RECETA',
-//       receta
-//     })
-//   }
-// });
-
-// //export default Recetas;
-// export default connect(mapStateToProps, mapDispatchToProps)(Recetas);
-
-//COMO CLASE
-
 import React, { Component } from "react";
-//import { recetas } from "../store";
-//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//import { faTrash } from "@fortawesome/free-solid-svg-icons";
-//import Receta from "./receta";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
-
 const mapStateToProps = state => {
-  //console.log(state.recetas);
- // console.log(localStorage.getItem("recetas"));
-
-  if(JSON.parse(sessionStorage.getItem("recetas"))){
-   // console.log("cogemos las recetas del local storage");
+  if (JSON.parse(sessionStorage.getItem("recetas"))) {
     return {
-     recetas: JSON.parse(sessionStorage.getItem("recetas"))
+      recetas: JSON.parse(sessionStorage.getItem("recetas"))
     };
-
-  }else{
-   // console.log("cogemos las recetas del store");
+  } else {
     return {
-      //  ...state,
       recetas: state.recetas
     };
   }
 };
 
 const mapDispatchToProps = dispatch => ({
-  // agregarASupermercado1(producto){
-  //     dispatch({
-  //         type: 'AGREGAR_A_SUPERMERCADO_1',
-  //         producto
-  //     })
-  //},
 });
 
 //utilizamos el context para pasar la receta seleccionada al componente receta
@@ -112,7 +41,6 @@ class Recetas extends Component {
   }
 
   render() {
-    
     if (this.state.mostrarDetalle) {
       // console.log(this.state.receta)
       // return <Receta></Receta>

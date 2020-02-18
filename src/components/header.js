@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faHeart } from "@fortawesome/free-solid-svg-icons";
 //hacemos el import del Router, link y switch
 import {  Link } from "react-router-dom";
-import { connect } from "react-redux";
 
 
 // const mapStateToProps = state => {

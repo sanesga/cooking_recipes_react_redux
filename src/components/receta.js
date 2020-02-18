@@ -14,7 +14,7 @@ import {
 import { connect } from "react-redux";
 
 const mapStateToProps = state => ({
-  //receta: state.receta
+  
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -31,18 +31,11 @@ const mapDispatchToProps = dispatch => ({
       id
     });
   },
-  fav(estado) {
-    if (estado.favorito) {
+  fav(receta) {
       dispatch({
         type: "AGREGAR_FAVORITO",
-        estado
+        receta
       });
-    } else {
-      dispatch({
-        type: "ELIMINAR_FAVORITO",
-        estado
-      });
-    }
   }
 });
 
@@ -97,16 +90,10 @@ class Receta extends Component {
     this.props.borrar(this.state.id);
   };
   favorito = e => {
-    if (this.state.favorito) {
-      this.setState({
-        favorito: false
-      });
-    } else {
       this.setState({
         favorito: true
       });
-    }
-    this.props.fav(this.state);
+      this.props.fav(this.state);
   };
 
   render() {
