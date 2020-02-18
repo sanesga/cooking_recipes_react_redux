@@ -121,7 +121,7 @@
 /* formulario añadir y modificar receta */
 .formulario {
   border: 1px solid lightgray;
-  height: 55%;
+  height: 75%;
   width: 30%;
   position: absolute;
   left: 0;
@@ -212,8 +212,8 @@
 .receta_container {
   margin-top: 100px;
   border: 1px solid lightgray;
-  height: 40%;
-  width: 60%;
+  height: 60%;
+  width: 70%;
   position: absolute;
   left: 0;
   right: 0;
@@ -288,14 +288,14 @@
   margin: 15px;
 }
 .menu_lateral {
-  height: 22%;
+  height: 33%;
   width: 10%;
   background-color: #db4361;
-  margin-left: 16%;
+  margin-left: 5%;
   position: absolute;
   left: 0;
   right: 0;
-  top: 40%;
+  top: 30%;
   bottom: 0;
   -webkit-box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
   -moz-box-shadow: 4px 6px 54px -1px rgba(158, 158, 158, 1);
