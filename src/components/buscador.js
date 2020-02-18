@@ -1,15 +1,43 @@
 import React, { Component } from "react";
 //importamos connect
 import { connect } from "react-redux";
+//importamos el redirect
+import { Redirect } from "react-router-dom";
 
 class Buscador extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      //variable utilizada para redirigir al componente receta (para ver el detalle)
+      mostrarDetalle: false,
+      //receta seleccionada
+      receta: null
     };
+  }
+//al hacer click sobre una receta, se actualiza el state y al llamar al render se redirige al componente receta para mostrar el detalle
+  mostrarDetalle(receta) {
+    this.setState({
+      mostrarDetalle: true,
+      //guardamos la receta seleccionada
+      receta: receta
+    });
   }
 
   render() {
+       //si la variable es true, se redirige al componente receta para ver el detalle
+       if (this.state.mostrarDetalle) {
+        return (
+          <div>
+            {/* en el redirect le pasamos la receta al componente receta a través de props */}
+            <Redirect
+              to={{
+                pathname: "/receta",
+                state: { receta: this.state.receta }
+              }}
+            />
+          </div>
+        );
+      }
     //recogemos el texto enviado por props desde el buscador del componente header y lo pasamos a minúsculas
     const texto = this.props.match.params.texto.toLowerCase();
     //array donde guardaremos el resultado de la búsqueda
