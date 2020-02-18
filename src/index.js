@@ -3,13 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-// importamos la librería de bootstrap
-//import 'bootstrap/dist/css/bootstrap.min.css';
-//añadimos el import del react-router
+//importamos el Router
 import { BrowserRouter as Router } from "react-router-dom";
 
 ReactDOM.render(
-  //añadimos el Router
+  //añadimos el Router, que engloba toda la aplicación
   <Router>
     <App />
   </Router>,

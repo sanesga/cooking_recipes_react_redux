@@ -1,3 +1,4 @@
+//archivo store, donde está nuestro array de recetas que se cargará por defecto y los reducers, que harán los cambios en el state
 import { createStore } from "redux";
 //json de recetas
 const estadoInicial = {
@@ -11,7 +12,7 @@ const estadoInicial = {
       dificultad: "Fácil",
       tiempo: "00:20",
       raciones: 2,
-      favorito:false
+      favorito: false
     },
     {
       id: 2,
@@ -22,7 +23,7 @@ const estadoInicial = {
       dificultad: "Media",
       tiempo: "00:30",
       raciones: 4,
-      favorito:false
+      favorito: false
     },
     {
       id: 3,
@@ -33,7 +34,7 @@ const estadoInicial = {
       dificultad: "Media",
       tiempo: "01:00",
       raciones: 4,
-      favorito:false
+      favorito: false
     },
     {
       id: 4,
@@ -44,14 +45,19 @@ const estadoInicial = {
       dificultad: "Media",
       tiempo: "01:30",
       raciones: 4,
-      favorito:false
+      favorito: false
     } //fin receta
   ], //fin array recetas
   favoritos: []
 }; //fin const estadoInicial
+
+//reducer (hará loscambios en el state)
 const reducerRecetas = (state = estadoInicial, action) => {
-  if (action.type === "AGREGAR_A_RECETA") {
+  //agregar una receta al array de recetas
+  if (action.type === "AGREGAR_RECETA") {
+    //concatenamos la receta que le enviamos a través del action
     var list1 = state.recetas.concat(action.receta);
+    //guardamos las recetas en session storage para que los datos persistan aunque recarguemos la página (se perderán al cerrar la pestaña del navegador)
     sessionStorage.setItem("recetas", JSON.stringify(list1));
     return {
       ...state,
@@ -59,7 +65,9 @@ const reducerRecetas = (state = estadoInicial, action) => {
     };
   }
 
+  //eliminar una receta del array de recetas
   if (action.type === "ELIMINAR_RECETA") {
+    //añadimos todas las recetas del array de recetas, a uno nuevo, excepto la que queremos eliminar
     var list2 = state.recetas.filter(receta => receta.id !== action.id);
     sessionStorage.setItem("recetas", JSON.stringify(list2));
     return {
@@ -68,7 +76,9 @@ const reducerRecetas = (state = estadoInicial, action) => {
     };
   }
 
+  //modificar una receta
   if (action.type === "EDITAR_RECETA") {
+    //agregamos todas las recetas menos la que queremos modificar al nuevo array (se eliminará) para luego concatenar la nueva modificada.
     var list3 = state.recetas
       .filter(receta => receta.id !== action.receta.id)
       .concat(action.receta);
@@ -79,15 +89,7 @@ const reducerRecetas = (state = estadoInicial, action) => {
     };
   }
 
-  if (action.type === "AGREGAR_RECETA") {
-    var list4 = state.recetas.concat(action.receta);
-    sessionStorage.setItem("recetas", JSON.stringify(list4));
-    return {
-      ...state,
-      recetas: list4
-    };
-  }
-
+  //agregamos la receta seleccionada al array de favoritos
   if (action.type === "AGREGAR_FAVORITO") {
     var list5 = state.favoritos.concat(action.receta);
     sessionStorage.setItem("favoritos", JSON.stringify(list5));
@@ -96,9 +98,11 @@ const reducerRecetas = (state = estadoInicial, action) => {
       favoritos: list5
     };
   }
-
+  //eliminamos la receta seleccionada del array de favoritos
   if (action.type === "ELIMINAR_FAVORITO") {
-    var list6 = state.favoritos.filter(receta => receta.id !== action.receta.id);
+    var list6 = state.favoritos.filter(
+      receta => receta.id !== action.receta.id
+    );
     sessionStorage.setItem("favoritos", JSON.stringify(list6));
     return {
       ...state,
