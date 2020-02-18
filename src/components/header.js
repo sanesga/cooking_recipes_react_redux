@@ -7,11 +7,19 @@ import { faSearch, faHeart } from "@fortawesome/free-solid-svg-icons";
 //hacemos el import de link
 import { Link } from "react-router-dom";
 
+
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      texto: ""
+    };
   }
+  guardar = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
 
   render() {
     return (
@@ -31,17 +39,18 @@ class Header extends Component {
               className="search"
               type="text"
               placeholder="Introduce ingredientes"
-              onChange={this.buscador}
+              onChange={this.guardar}
             ></input>
             {/* insertamos un icono de fontawesome */}
-            <button className="search_button">
-              <FontAwesomeIcon icon={faSearch} />
-            </button>
+            <Link to={"/buscador/"+this.state.texto}>
+              <button className="search_button" onClick={this.buscar}>
+                <FontAwesomeIcon icon={faSearch} />
+              </button>
+            </Link>
           </li>
           {/* el botón favoritos, nos dirige al componente favoritos */}
           <li className="li_right">
             <Link to="/favoritos">
-              {" "}
               <button className="favorite_button">
                 <FontAwesomeIcon icon={faHeart} />
               </button>

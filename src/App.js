@@ -17,6 +17,7 @@ import Receta from "./components/receta";
 import Formulario from "./components/formulario";
 import Favoritos from "./components/favoritos";
 import Header from "./components/header";
+import Buscador from "./components/buscador";
 
 //convertimos App en componente
 class App extends Component {
@@ -61,6 +62,7 @@ class App extends Component {
             <Route exact path="/formulario" component={Formulario} />
             <Route exact path="/favoritos" component={Favoritos} />
             <Route exact path="/header" component={Header} />
+            <Route exact path="/buscador/:texto" component={Buscador} />
           </Provider>
         </Switch>
       </div>
