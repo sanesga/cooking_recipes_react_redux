@@ -15,6 +15,7 @@ class Header extends Component {
       texto: ""
     };
   }
+  //guardamos el texto introducido en el buscador en la variable del state
   guardar = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -32,7 +33,8 @@ class Header extends Component {
               <img className="logo" src={Logo} alt="logo"></img>{" "}
             </Link>
           </li>
-          {/* la funcionalidad del buscador no está implementada */}
+          {/* buscador de recetas, al introducir un nombre, guarda el texto en una variable a través del onChange */}
+          {/* al hacer click en el icono de buscar, pasamos el texto a través de la url con Link */}
           <li>
             <input
               name="texto"

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-//importamos la librería redirect
-import {Redirect} from "react-router-dom";
+//importamos connect
 import { connect } from "react-redux";
 
 class Buscador extends Component {
@@ -11,18 +10,20 @@ class Buscador extends Component {
   }
 
   render() {
-    
+    //recogemos el texto enviado por props desde el buscador del componente header y lo pasamos a minúsculas
     const texto = this.props.match.params.texto.toLowerCase();
-    var array = [];
+    //array donde guardaremos el resultado de la búsqueda
+    var resultado = [];
+    //recorremos el array que hemos recuperado del store y si el nombre de alguna receta contiene el nombre que buscamos, añadimos la receta al nuevo array
     for (const receta of this.props.recetas) {
      if(receta.titulo.toLowerCase().includes(texto)){
-       array.push(receta);
+       resultado.push(receta);
      }
     }
     return (
-      // LISTADO DE RECETAS
+      // IMPRIMIMOS EL RESULTADO DE LA BÚSQUEDA
       <div className="cards_container">
-        {array.map(receta => (
+        {resultado.map(receta => (
           <div
             className="card"
             key={receta.id}
@@ -44,6 +45,7 @@ class Buscador extends Component {
     );
   }
 }
+//recuperamos la lista de recetas del store o de session storage
 const mapStateToProps = state => {
   if (JSON.parse(sessionStorage.getItem("recetas"))) {
     return {
@@ -56,8 +58,8 @@ const mapStateToProps = state => {
   }
 };
 
+//no utilizamos este método
 const mapDispatchToProps = dispatch => ({
-  
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Buscador);
 
